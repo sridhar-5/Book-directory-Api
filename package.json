@@ -1,0 +1,30 @@
+{
+  "name": "book-directory-api",
+  "version": "1.0.0",
+  "description": "This is one of the primary projects you can create using Node.js, Express.js, and simple REST API.  endpoints using fundamental methods such as GET, PUT, POST, and DELETE.  Use GET for getting all books one by into the id. Using the POST method, add a new book to the directory. With the PUT method, you can update the existing books, and with the DELETE method, you can remove the books.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sridhar-5/Book-directory-Api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sridhar-5/Book-directory-Api/issues"
+  },
+  "homepage": "https://github.com/sridhar-5/Book-directory-Api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "joi": "^17.4.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^5.13.2",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}
