@@ -3,6 +3,8 @@ const Express = require("express");
 const router = Express.Router();
 const { Book, validateInput } = require("../models/Books");
 const joi = require("Joi");
+const authUser = require("../middleware/authUser");
+const adminUser = require("../middleware/adminUser");
 
 router.get("/", async (request, response) => {
   //this info has to be retrived from the database
@@ -11,7 +13,7 @@ router.get("/", async (request, response) => {
   response.send(Books);
 });
 
-router.post("/", async (request, response) => {
+router.post("/", authUser, async (request, response) => {
   //validate before the sending the data to the database
   const joischema = validateInput();
   const { error } = joischema.validate(request.body);
@@ -28,7 +30,7 @@ router.post("/", async (request, response) => {
 
 module.exports = router;
 
-router.put("/:BookId", async (request, response) => {
+router.put("/:BookId", [authUser, adminUser], async (request, response) => {
   const joischema = validateInput();
   const { error } = joischema.validate(request.body);
   console.log("error", error);
@@ -47,7 +49,7 @@ router.put("/:BookId", async (request, response) => {
   console.log(BooksUpdate);
   response.send(BooksUpdate);
 });
-router.delete("/:BooksId", async (request, response) => {
+router.delete("/:BooksId", [authUser, adminUser], async (request, response) => {
   const DeletedBook = await Book.findByIdAndRemove(request.params.BooksId);
   if (!DeletedBook)
     return response.status(400).send("No book with this id is found");

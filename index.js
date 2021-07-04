@@ -14,9 +14,12 @@ app.set("views", "./views");
 //importing routes
 const HomePage = require("./routes/HomePage");
 const MainOperations = require("./routes/MainOperations");
-
+const LoginUser = require("./routes/LoginUser");
+const RegisterUser = require("./routes/RegisterUser");
 app.use("/", HomePage);
 app.use("/api/books", MainOperations);
+app.use("/api/login", LoginUser);
+app.use("/api/register", RegisterUser);
 //retruns a promise
 const DataBaseConnectionStatus = mongoose.connect(
   "mongodb://localhost:27017/Bookdirectory",
