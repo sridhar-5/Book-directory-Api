@@ -47,3 +47,9 @@ router.put("/:BookId", async (request, response) => {
   console.log(BooksUpdate);
   response.send(BooksUpdate);
 });
+router.delete("/:BooksId", async (request, response) => {
+  const DeletedBook = await Book.findByIdAndRemove(request.params.BooksId);
+  if (!DeletedBook)
+    return response.status(400).send("No book with this id is found");
+  response.send(DeletedBook);
+});
